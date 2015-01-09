@@ -1,0 +1,185 @@
+/* Set the height (in pixels) of the element you want the snowflakes to fall in OR if the parent element has a height already set, @ad-height can be 100% */
+// Variables
+@ad-width: 100%;
+@ad-height: 100%;
+
+//body { background: #333; height: 500px; } // comment this line for production, background should be dark
+// Ad Unit Container
+.snow {
+	width: @ad-width; 
+	height: @ad-height;
+	position: relative;
+	overflow: hidden;
+    z-index: 100;
+}
+
+// Mixins
+.flake-animation(@anim, @time, @timing, @repetition){
+	-webkit-animation: @anim @time @timing @repetition;
+	-moz-animation: @anim @time @timing @repetition;
+	animation: @anim @time @timing @repetition;
+}
+
+// Layout elements
+.snowflake { 
+	position: absolute; 
+	top: 0px; 
+	left: 0px; 
+	/* snowflake fall speed */
+	.flake-animation(snowfall, 6s, linear, infinite);
+	&.fast-fall {  
+		.flake-animation(snowfall, 9s, linear, infinite);
+	}
+	&.med-fall { 
+		.flake-animation(snowfall, 13s, linear, infinite);
+	}
+	&.slow-fall { 
+		.flake-animation(snowfall, 18s, linear, infinite);
+	}
+	.flake { 
+		position: absolute; 
+		left: 0px; 
+	}
+	/* image l-r speed */
+	.flake {
+		&.fast { 
+			.flake-animation(flake-fs, 8s, linear, infinite);
+		}
+		&.medium { 
+			.flake-animation(flake-md, 10s, linear, infinite);
+		}
+		&.slow { 
+			.flake-animation(flake, 15s, linear, infinite);
+		}
+	}
+}
+
+// Keyframe Animations
+// Normal snowfall positions
+@-webkit-keyframes snowfall {
+	0% {
+        top: -20px;
+        -webkit-transform: rotate(0deg);
+    }
+	100% {
+        top: @ad-height + 5;
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-moz-keyframes snowfall {
+	0% {
+        top: -20px;
+        -moz-transform: rotate(0deg);
+    }
+	100% {
+        top: @ad-height + 5;
+        -moz-transform: rotate(360deg);
+    }
+}
+@keyframes snowfall {
+	0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+	100% {
+        top: @ad-height + 5;
+        transform: rotate(360deg);
+    }
+}
+
+// Slower snowfall positions
+@-webkit-keyframes snowfall-sl {
+	0% { top: -15px; }
+	100% { top: @ad-height + 25; }
+}
+@-moz-keyframes snowfall-sl {
+	0% { top: -15px; }
+	100% { top: @ad-height + 25; }
+}
+@keyframes snowfall-sl {
+	0% { top: -15px; }
+	100% { top: @ad-height + 25; }
+}
+
+// Medium Snowfall positions
+@-webkit-keyframes snowfall-md {
+	0% { top: -25px; }
+	100% { top: @ad-height + 15; }
+}
+@-moz-keyframes snowfall-md {
+	0% { top: -25px; }
+	100% { top: @ad-height + 15; }
+}
+@keyframes snowfall-md {
+	0% { top: -25px; }
+	100% { top: @ad-height + 15; }
+}
+
+// Snowflake wiggle
+@-webkit-keyframes flake {
+	0% { left: 0px;}
+	25% { left: 25px;}
+	50% { left: 0px;}
+	75% { left: 10px;}
+	100% { left: 0px;}
+}
+@-moz-keyframes flake {
+	0% { left: 0px;}
+	25% { left: 25px;}
+	50% { left: 0px;}
+	75% { left: 10px;}
+	100% { left: 0px;}
+}
+@keyframes flake {
+	0% { left: 0px;}
+	25% { left: 25px;}
+	50% { left: 0px;}
+	75% { left: 10px;}
+	100% { left: 0px;}
+}
+
+// Snowflake wiggle medium
+@-webkit-keyframes flake-md {
+	0% { left: 0px;}
+	25% { left: 10px;}
+	50% { left: 0px;}
+	75% { left: 5px;}
+	100% { left: 0px;}
+}
+@-moz-keyframes flake-md {
+	0% { left: 0px;}
+	25% { left: 10px;}
+	50% { left: 0px;}
+	75% { left: 5px;}
+	100% { left: 0px;}
+}
+@keyframes flake-md {
+	0% { left: 0px;}
+	25% { left: 10px;}
+	50% { left: 0px;}
+	75% { left: 5px;}
+	100% { left: 0px;}
+}
+
+// Snowflake wiggle faster
+@-webkit-keyframes flake-fs {
+	0% { left: 0px;}
+	25% { left: 5px;}
+	50% { left: 0px;}
+	75% { left: 15px;}
+	100% { left: 0px;}
+}
+@-moz-keyframes flake-fs {
+	0% { left: 0px;}
+	25% { left: 5px;}
+	50% { left: 0px;}
+	75% { left: 15px;}
+	100% { left: 0px;}
+}
+@keyframes flake-fs {
+	0% { left: 0px;}
+	25% { left: 5px;}
+	50% { left: 0px;}
+	75% { left: 15px;}
+	100% { left: 0px;}
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Let It Snow jQuery Plugin</title>
+    <link rel="stylesheet" href="snowflake.css" />
+    <style>
+        /* example header (dark background, decent height to accomodate some falling snowflakes) */
+        header {
+            height: 500px;
+            background: #666;
+        }
+    </style>
+</head>
+<body id="snow">
+<header>
+    <div>
+        <h2>Welcome to Our Plugin</h2>
+    </div>
+</header>
+<section>
+    <h2>Main Content Area</h2>
+    <p>This is the main content area</p>
+</section>
+
+<footer>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery.letItSnow.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('header > div').letItSnow({
+                numSnowflakes : 20 // number of snowflakes per cycle
+            });
+        });
+    </script>
+</footer>
+</body>
+</html>
